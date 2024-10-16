@@ -14,6 +14,7 @@ class _FilterListState extends State<FilterList> {
     'propertyValue': null,
     'priceValue': null,
     'bedrooms': null,
+    'Sales status': null
   };
 
   @override

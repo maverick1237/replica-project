@@ -48,7 +48,7 @@ class _FilterPillState extends State<FilterPill> {
           ],
           GestureDetector(
             onTap: () {
-              openBottomSheet(
+              openBottomFilterSheet(
                   context, widget.title, widget.listOptions, widget.onChanged);
             },
             child: Row(

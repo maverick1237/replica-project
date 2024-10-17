@@ -1,8 +1,11 @@
+import 'package:alnair/src/models/property_model.dart';
 import 'package:alnair/src/utils/utilities.dart';
 import 'package:flutter/material.dart';
 
 class PropertyCard extends StatefulWidget {
-  const PropertyCard({super.key});
+  final Property property;
+
+  const PropertyCard({required this.property, super.key});
 
   @override
   State<PropertyCard> createState() => _PropertyCardState();
@@ -28,23 +31,22 @@ class _PropertyCardState extends State<PropertyCard> {
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              // Blue Container (Image placeholder)
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.4 * 0.58,
+                height: MediaQuery.of(context).size.height * 0.4 * 0.56,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  image: const DecorationImage(
+                  image: DecorationImage(
                     image: NetworkImage(
-                      'https://files.alnair.ae/uploads/logo/2023/5/5c/48/5c48b73ec740a0b53e4807a0210eb31c.jpg',
-                    ),
+                        widget.property.imageUrl), // Use the property image
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
 
+              // Details
               Positioned(
-                bottom: 0, // Fix the green container at the bottom
+                bottom: 0,
                 left: 0,
                 right: 0,
                 child: GestureDetector(
@@ -68,8 +70,8 @@ class _PropertyCardState extends State<PropertyCard> {
                       padding: const EdgeInsets.only(
                           left: 8, right: 8, top: 8, bottom: 4),
                       child: _isExpanded
-                          ? expandedCardInfoBar(context)
-                          : collapsedCardInfoBar(context),
+                          ? expandedCardInfoBar(context, widget.property)
+                          : collapsedCardInfoBar(context, widget.property),
                     ),
                   ),
                 ),
